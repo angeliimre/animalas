@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        body{
+            height: 100vh;
+            width: 100%;
+        }
+        div{
+            width: 10vh;
+            height: 10vh;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js">
+    </script>
+</head>
+<body>
+    <div>
+        Az oldal nem található
+    </div>
+    <script>
+        $(document).ready(function(){
+            let l=0;
+            let t=0;
+            const w=$('div').width();
+            const h=$('div').height();
+            const bw=$('body').width();
+            const bh=$('body').height();
+            let le=true;
+            let jobb=true;
+            function merre(le,jobb){
+                if(le==true){
+                    t+=5;
+                }
+                else{
+                    t-=5;
+                }
+                if(jobb==true){
+                    l+=5;
+                }
+                else{
+                    l-=5;
+                }
+            }
+            setInterval(function(){
+                if(t+h>=bh){
+                    le=false;
+                }
+                else if(t<=0){
+                    le=true;
+                }
+
+                if(l+w>=bw){
+                    jobb=false;
+                }
+                else if(l<=0){
+                    jobb=true;
+                }
+                merre(le,jobb);
+                $('div').animate({
+                    'left':l+'px',
+                    'top':t+'px'
+                }),'1'},'1');
+            
+        })
+    </script>
+</body>
+</html>
